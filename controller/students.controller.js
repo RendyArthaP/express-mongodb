@@ -35,6 +35,35 @@ module.exports = {
     } catch(error) {
       console.log(error)
     }
+  },
+
+  updateStudent: async (req, res) => {
+    const ids = req.params.id
+    const updateDataStudent = req.body
+
+    try{
+      await student.findByIdAndUpdate(ids, updateDataStudent)
+      await student.save()
+
+      res.status(200).json({
+        message: "Update data success"
+      })
+    } catch(error) {
+      console.log(error)
+    }
+  },
+
+  deleteStudent: async (req, res) => {
+    const ids = req.params.id
+    try{
+      await student.findByIdAndDelete(ids)
+      
+      res.status(200).json({
+        message: "Delete data success"
+      })
+    } catch(error) {
+      console.log(error)
+    }
   }
 }
 
