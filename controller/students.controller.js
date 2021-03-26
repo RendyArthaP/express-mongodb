@@ -43,7 +43,6 @@ module.exports = {
 
     try{
       await student.findByIdAndUpdate(ids, updateDataStudent)
-      await student.save()
 
       res.status(200).json({
         message: "Update data success"

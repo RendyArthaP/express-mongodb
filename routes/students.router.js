@@ -11,7 +11,7 @@ const {
 router.get('/', getAllStudents)
 router.get('/:id', getStudentsByID)
 router.post('/', addStudent)
-router.patch('/:id', updateStudent)
+router.put('/:id', updateStudent)
 router.delete('/:id', deleteStudent)
 
 module.exports = router
