@@ -7,4 +7,4 @@ mongoose.connect(MONGODB_LIVE, {
 })
 
 const dbConfigMongo = mongoose.connection;
-module.exports = { dbConfigMongo }
+module.exports = dbConfigMongo

@@ -1,5 +1,5 @@
 const express = require('express');
-const { PORT, dbConfigMongo } = require('./config')
+const { PORT } = require('./config')
 const app = express()
 const localPort = PORT || 3000
 const cors = require('cors')
@@ -9,6 +9,6 @@ app.use(cors())
 app.use(express.json())
 app.use(routes)
 
-app.listen(PORT, (req, res) => {
+app.listen(PORT, () => {
   console.log(`Application running at http://localhost:${PORT}`)
 })
