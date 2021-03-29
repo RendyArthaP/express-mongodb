@@ -2,7 +2,21 @@ const student = require('../models/student')
 const bcrypt = require('bcrypt')
 module.exports = {
   handleLogin: async (req, res) => {
+    const {name, password} = req.body
 
+    const students = await student.findOne({name})
+    if(students) {
+      if(bcrypt.compareSync(password, students.password)) {
+        res.status(200).json({
+          message: "Login success",
+          data: students
+        })
+      } else {
+        res.status(500).json({
+          message: "Invalid email or password"
+        })
+      }
+    }
   },
 
   handleRegister: async (req, res) => {
