@@ -2,7 +2,7 @@ const pinjamBuku = require('../models/pinjamBuku')
 
 module.exports = {
   getPinjamBuku: async (req, res) => {
-    const books = await pinjamBuku.find().populate(["name", "buku"])
+    const books = await pinjamBuku.find().populate("name", "-score -nomorAbsen -__v -classRoom").populate("buku")
 
     try {
       res.status(200).json({
