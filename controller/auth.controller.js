@@ -1,21 +1,26 @@
 const student = require('../models/student')
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
+
 module.exports = {
   handleLogin: async (req, res) => {
-    const {name, password} = req.body
+    const { name, password } = req.body
+    let students = await student.findOne({name})
+    const comparePassword = bcrypt.compareSync(password, students.password)
 
-    const students = await student.findOne({name})
-    if(students) {
-      if(bcrypt.compareSync(password, students.password)) {
-        res.status(200).json({
-          message: "Login success",
-          data: students
-        })
-      } else {
-        res.status(500).json({
-          message: "Invalid email or password"
-        })
-      }
+    if(students && comparePassword) {
+      students = students.toObject()
+      const { password, ...payload } = students
+      const token = jwt.sign(payload, "kepoyah?hehe")
+
+      res.status(200).json({
+        message: "Login success",
+        token
+      })
+    } else {
+      res.status(500).json({
+        message: "Invalid email or password"
+      })
     }
   },
 
