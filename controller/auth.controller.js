@@ -1,6 +1,7 @@
 const student = require('../models/student')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const { JWT_KEY } = require('../config')
 
 module.exports = {
   handleLogin: async (req, res) => {
@@ -11,7 +12,7 @@ module.exports = {
     if(students && comparePassword) {
       students = students.toObject()
       const { password, ...payload } = students
-      const token = jwt.sign(payload, "kepoyah?hehe")
+      const token = jwt.sign(payload, JWT_KEY)
 
       res.status(200).json({
         message: "Login success",
