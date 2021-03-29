@@ -6,5 +6,5 @@ mongoose.connect(MONGODB_LIVE, {
   useUnifiedTopology: true
 })
 
-const dbConfigMongo = mongoose.connection;
+const dbConfigMongo = mongoose.connection
 module.exports = dbConfigMongo

@@ -2,7 +2,8 @@ const student = require('../models/student')
 
 module.exports = {
   getAllStudents: async (req, res) => {
-    const students = await student.find({})
+    const students = await student.find()
+
     try {
       res.status(200).json({
         message: "Get data student success",
@@ -15,6 +16,7 @@ module.exports = {
   
   getStudentsByID: async (req, res) => {
     const students = await student.findById(req.params.id)
+
     try {
       res.status(200).json({
         message: "Get student by ID success",
@@ -27,6 +29,7 @@ module.exports = {
 
   addStudent: async (req, res) => {
     const students = await student.create(req.body)
+
     try {
       res.status(200).json({
         message: "Input data student success",
@@ -39,11 +42,10 @@ module.exports = {
 
   updateStudent: async (req, res) => {
     const ids = req.params.id
-    const updateDataStudent = req.body
+    const inputUpdateDataStudent = req.body
 
     try{
-      await student.findByIdAndUpdate(ids, updateDataStudent)
-
+      await student.findByIdAndUpdate(ids, inputUpdateDataStudent)
       res.status(200).json({
         message: "Update data success"
       })
@@ -54,9 +56,9 @@ module.exports = {
 
   deleteStudent: async (req, res) => {
     const ids = req.params.id
+
     try{
       await student.findByIdAndDelete(ids)
-      
       res.status(200).json({
         message: "Delete data success"
       })

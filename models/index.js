@@ -1,5 +1,7 @@
-const student = require('./student');
+const student = require('./student')
+const classRoom = require('./classroom')
 
 module.exports = {
-  student
+  student,
+  classRoom
 }
