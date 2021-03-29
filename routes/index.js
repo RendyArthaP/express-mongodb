@@ -4,6 +4,7 @@ const studentRouter = require('./students.router')
 const classRoomRouter =  require('./classroom.router')
 const bukuRouter = require('./buku.router')
 const pinjamBukuRouter = require('./pinjambuku.router')
+const authRouter = require('./auth.router')
 
 router.get('/', (req, res) => {
   res.json({
@@ -15,5 +16,6 @@ router.use('/student', studentRouter)
 router.use('/classroom', classRoomRouter)
 router.use('/buku', bukuRouter)
 router.use('/pinjambuku', pinjamBukuRouter)
+router.use('/auth', authRouter)
 
 module.exports = router

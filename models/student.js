@@ -4,6 +4,10 @@ const StudentSchema = new mongoose.Schema({
     type: String,
     require: true
   },
+  password: {
+    type: String,
+    require: true
+  },
   score: Number,
   nomorAbsen: Number,
   classRoom: {
