@@ -5,7 +5,11 @@ const StudentSchema = new mongoose.Schema({
     require: true
   },
   score: Number,
-  nomorAbsen: Number
+  nomorAbsen: Number,
+  classRoom: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "classroom"
+  }
 })
 
 const student = mongoose.model("student", StudentSchema)

@@ -2,7 +2,7 @@ const student = require('../models/student')
 
 module.exports = {
   getAllStudents: async (req, res) => {
-    const students = await student.find()
+    const students = await student.find().populate("classRoom")
 
     try {
       res.status(200).json({
